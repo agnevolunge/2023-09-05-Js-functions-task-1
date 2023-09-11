@@ -11,19 +11,24 @@ function checkPassword (originalPassword) {
 let password = originalPassword.trim() //trim f-ja ignoruoja tarpus. ieskot google "trim string", kaip pvz siuo atveju galetu buti 3 raides slaptazodyje ir 14 tarpu.
 let passwordLength = password.length 
 
+let output = ''
+
 if (!password.includes('#')){
-    console.log('Slaptažodis privalo turėti grotažymes')
+    output = 'Slaptažodis privalo turėti grotažymes'
 }   else if (passwordLength < 16) {
-    console.log('Slaptažodis yra per trumpas. Jis privalo būti bent 16 simbolių ilgumo.')
+    output = 'Slaptažodis yra per trumpas. Jis privalo būti bent 16 simbolių ilgumo.'
 }   else if (passwordLength < 21) {
-    console.log('Slaptažodis yra tinkamas. Tačiau rekomenduojama jog jis būtų bent 21 simbolio ilgumo.')
+    output = 'Slaptažodis yra tinkamas. Tačiau rekomenduojama jog jis būtų bent 21 simbolio ilgumo.'
 }   else {
-    console.log('Slaptažodis tinkamas')
+    output = 'Slaptažodis tinkamas'
 }
+
+// console.log(output)
+document.querySelector('h1').textContent = output
+
 }
-//  checkPassword ('jadgsvljdhsvghsaldjhfg')
-//  checkPassword ('kajhgdsfjlhgsss#')
-//  checkPassword ('kjhkjh')
+ checkPassword ('jadgsvljdhsvghsaldjhfg')
+ 
 
 // AMŽIUS:
 // Pagal amžiu surašyti į kurią klasė eina mokinys:
@@ -85,67 +90,75 @@ if (isNaN(age)){
 // 1. Norint patekti į kitą lygį, reikia atsakyti bent į vieną klausimą iš dviejų:
 // 2. Jeigu atsakytas tik vienas klausimas, tai papildomai reikia parašyti kuris klausimas buvo neteisingas.
 
-function firstGameLevel(playerAnswer11, playerAnswer12) {
+function firstGameLevel() {
 
 // Artimiausia nuo Žemės esanti Žvaigždė?
     let correctAnswer11 = 'sun'
     let correctAnswer12 = 579
 
+    let playerAnswer11 = prompt('Artimiausia nuo Žemės esanti Žvaigždė?')
+    let playerAnswer12 = prompt('123 + 456?')
 
 if (correctAnswer11 === playerAnswer11 && correctAnswer12 === playerAnswer12) {
-    console.log('Patekai i kita lygi: abu atsakymai teisingi.')
+    alert('Patekai i kita lygi: abu atsakymai teisingi.')
+    secondGameLevel()
   } else if (correctAnswer12 === playerAnswer12) {
-    console.log('Patekai i kita lygi: pirmas atsakymas buvo neteisingas, o antras buvo teisingas.')
+    alert('Patekai i kita lygi: pirmas atsakymas buvo neteisingas, o antras buvo teisingas.')
+    secondGameLevel()
   } else if (correctAnswer11 === playerAnswer11) {
-    console.log('Patekai i kita lygi: antras atsakymas buvo neteisingas, o pirmas buvo teisingas.')
+    alert('Patekai i kita lygi: antras atsakymas buvo neteisingas, o pirmas buvo teisingas.')
+    secondGameLevel()
   } else {
-    console.log('Nepatekai i kita lygi: abu atsakymai buvo neteisingi.')
+    alert('Nepatekai i kita lygi: abu atsakymai buvo neteisingi.')
   }
 }
 
-// firstGameLevel('moon', 485)
-// firstGameLevel('sun', 579)
+// firstGameLevel()
 
-function secondGameLevel(playerAnswer1, playerAnswer2){
+
+function secondGameLevel(){
 // ANTRAS LYGIS
 let correctAnswer1 = 1
 let correctAnswer2 = 1
 
+let playerAnswer1 = prompt('Antras lygis, pirmas klausimas?')
+let playerAnswer2 = prompt('Antras lygis, antras klausimas?')
 // 1. Patekai i kita lygi: abu atsakymai teisingi.
 // 2. Nepatekai i kita lygi: pirmas atsakymas buvo neteisingas, o antras buvo teisingas.
 // 3. Nepatekai i kita lygi: antras atsakymas buvo neteisingas, o pirmas buvo teisingas.
 // 4. Nepatekai i kita lygi: abu atsakymai buvo neteisingi.
 
-if (correctAnswer1 === playerAnswer1 && correctAnswer2 === playerAnswer2) {
-    console.log('Patekai i kita lygi: abu atsakymai teisingi.')
-  } else if (correctAnswer2 === playerAnswer2) {
-    console.log('Nepatekai i kita lygi: pirmas atsakymas buvo neteisingas, o antras buvo teisingas.')
-  } else if (correctAnswer1 === playerAnswer1) {
-    console.log('Nepatekai i kita lygi: antras atsakymas buvo neteisingas, o pirmas buvo teisingas.')
+if (correctAnswer1 == playerAnswer1 && correctAnswer2 == playerAnswer2) {
+    alert('Patekai i kita lygi: abu atsakymai teisingi.')
+    thirdGameLevel()
+  } else if (correctAnswer2 == playerAnswer2) {
+    alert('Nepatekai i kita lygi: pirmas atsakymas buvo neteisingas, o antras buvo teisingas.')
+  } else if (correctAnswer1 == playerAnswer1) {
+    alert('Nepatekai i kita lygi: antras atsakymas buvo neteisingas, o pirmas buvo teisingas.')
   } else {
-    console.log('Nepatekai i kita lygi: abu atsakymai buvo neteisingi.')
+    alert('Nepatekai i kita lygi: abu atsakymai buvo neteisingi.')
   }
 }
 
-// secondGameLevel(2, 2)
-// secondGameLevel(2, 1)
-// secondGameLevel(1, 1)
-
+// secondGameLevel()
 
 //   TREČIAS LYGIS: 
 // 1. Trys klausimai ir į kitą lygį pereinama, jeigu atsakomi bent du klausimai.
 // 2. Jeigu atsakomi du klausimai, turi būti parodoma, kuris klausimas buvo neatsakytas.
 // 3. Jeigu atsakomi mažiau nei du klausimai, tai turi parodyti, kuris klausimas buvo atsakytas.
-function thirdGameLevel (playerAnswer1, playerAnswer2, playerAnswer3) {
+function thirdGameLevel () {
 
 let correctAnswer1 = 1
 let correctAnswer2 = 1
 let correctAnswer3 = 1
 
+let playerAnswer1 = prompt('Trecias lygis, pirmas klausimas')
+let playerAnswer2 = prompt('Trecias lygis, antras klausimas')
+let playerAnswer3 = prompt('Trecias lygis, trecias klausimas')
 
-let answer1 = correctAnswer1 === playerAnswer1
-let answer2 = correctAnswer2 === playerAnswer2
-let answer3 = correctAnswer3 === playerAnswer3
+let answer1 = correctAnswer1 == playerAnswer1
+let answer2 = correctAnswer2 == playerAnswer2
+let answer3 = correctAnswer3 == playerAnswer3
 
 let output = ''
 
@@ -167,12 +180,11 @@ if (answer1 && answer2 && answer3) {
   output = 'Nepatekai: visi neteisingi :('
 }
 
-console.log(output)
+alert(output)
 }
 
-// thirdGameLevel(1, 2, 3)
-// thirdGameLevel(1, 1, 1)
-// thirdGameLevel(2, 1, 1)
+// thirdGameLevel()
+
 
 // PASISVEIKINIMAS:
 // 1. Jeigu vartotojas prisijungęs (true/false), tai prie pasisveikinimo reikia prirašyti jo vardą, pvz. „Good Morning, Tom.".
@@ -212,6 +224,6 @@ let greetingOutput = greetingText + nameText + birthdayText
 
 console.log(greetingOutput)
 }
-greeting(10, true, 'John', false)
-greeting(13)
-greeting(17, true, 'John', true)
+// greeting(10, true, 'John', false)
+// greeting(13)
+// greeting(17, true, 'John', true)
