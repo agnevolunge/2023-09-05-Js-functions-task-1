@@ -11,26 +11,26 @@ function checkPassword (originalPassword) {
 let password = originalPassword.trim() //trim f-ja ignoruoja tarpus. ieskot google "trim string", kaip pvz siuo atveju galetu buti 3 raides slaptazodyje ir 14 tarpu.
 let passwordLength = password.length 
 
-let output = ''
 
 if (!password.includes('#')){
-    output = 'Slaptažodis privalo turėti grotažymes'
-}   else if (passwordLength < 16) {
-    output = 'Slaptažodis yra per trumpas. Jis privalo būti bent 16 simbolių ilgumo.'
-}   else if (passwordLength < 21) {
-    output = 'Slaptažodis yra tinkamas. Tačiau rekomenduojama jog jis būtų bent 21 simbolio ilgumo.'
-}   else {
-    output = 'Slaptažodis tinkamas'
+    return 'Slaptažodis privalo turėti grotažymes'
+}
+if (passwordLength < 16) {
+    return 'Slaptažodis yra per trumpas. Jis privalo būti bent 16 simbolių ilgumo.'
+}
+if (passwordLength < 21) {
+    return 'Slaptažodis yra tinkamas. Tačiau rekomenduojama jog jis būtų bent 21 simbolio ilgumo.'
+}  
+    return 'Slaptažodis tinkamas'
 }
 
 // console.log(output)
 // document.querySelector('h1').textContent = output
-return output
 
-}
+
 //  checkPassword ('jadgsvljdhsvghsaldjhfg')
 
-//  console.log(checkPassword('kljhljhldskfghjks'))
+ console.log(checkPassword('kljhljhldskfghjks'))
 // //  alert(checkPassword('kljhljhl#dskfghjks'))
 //  document.querySelector('h1').textContent = checkPassword('jhgdaljhvbladjkdfbvk#')
 //  let passwordAnswer = 'Slaptazodzio statusas: ' + checkPassword('Slaptazodis tinkamas')
@@ -58,38 +58,44 @@ return output
 
 function checkAge (age) {
 
-let output = ''
 
 if (isNaN(age)){
-    output = 'Netinkamai nurodytas amžius, amžius privalo būti skaičius.'
-} else if (age < 0) {
-    output = 'įvestas amžius yra per mažas'
-} else if (age < 6) {
-    output = 'į mokyklą neina.'
-} else if (age < 7) {
-    output = 'Į mokyklą tikriausiai neina, tačiau gali būti ir pirmokas.'
-} else if (age < 10) {
-    output = 'Pradinukas'
-} else if (age < 11) {
-    output = 'Tikriausiai mokosi pradinėje, tačiau gali būti ir penktokas.'
-} else if (age < 14) {
-    output = 'Pagrindinė'
-} else if (age < 15) {
-    output = 'Tikriausiai mokosi pagrindinėje, tačiau gali būti ir devintokas.'
-} else if (age < 18) {
-    output = 'Gimnazija'
-} else if (age < 19) {
-    output = 'Tikriausiai mokosi gimnazijoje, tačiau mokyklą gali būti ir baigęs.'
-} else if (age < 120) {
-    output = 'Mokyklą baigė'
-} else {
-    output = 'Įvestas amžius yra per didelis'
+   return 'Netinkamai nurodytas amžius, amžius privalo būti skaičius.'
+}
+if (age < 0) {
+    return 'įvestas amžius yra per mažas'
+}
+if (age < 6) {
+    return 'į mokyklą neina.'
+}
+if (age < 7) {
+    return 'Į mokyklą tikriausiai neina, tačiau gali būti ir pirmokas.'
+}
+if (age < 10) {
+    return 'Pradinukas'
+}
+if (age < 11) {
+   return 'Tikriausiai mokosi pradinėje, tačiau gali būti ir penktokas.'
+}
+if (age < 14) {
+   return 'Pagrindinė'
+}
+if (age < 15) {
+    return 'Tikriausiai mokosi pagrindinėje, tačiau gali būti ir devintokas.'
+}
+if (age < 18) {
+   return 'Gimnazija'
+}
+if (age < 19) {
+   return 'Tikriausiai mokosi gimnazijoje, tačiau mokyklą gali būti ir baigęs.'
+}
+if (age < 120) {
+    return 'Mokyklą baigė'
+}
+   return 'Įvestas amžius yra per didelis'
 } 
 
-return output
-}
-
-// console.log(checkAge(15))
+console.log(checkAge(15))
 // document.querySelector('h1').textContent = checkAge(100)
 
 // checkAge (14)
